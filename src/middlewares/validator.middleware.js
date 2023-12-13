@@ -20,7 +20,7 @@ const validateLogin = (req, res, next) => {
   return res.status(422).json({
     errors: extractedErrors,
   });
-};
+}; 
 
 const registerValidationRules = () => {
   return [

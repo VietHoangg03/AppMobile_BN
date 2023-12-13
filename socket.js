@@ -38,9 +38,9 @@ const SocketServer = (socket, users) => {
   );
 
   socket.on("video-call-answer", ({ sender, receiver, payload }) => {
-    // const socketReceiver = users.find((e) => e.userId === receiver)?.socketId;
+    const socketReceiver = users.find((e) => e.userId === receiver)?.socketId;
     console.log(sender, receiver, payload);
-    socket.to(users[receiver._id]).emit("video-call-answer", {
+    socket.to(socketReceiver).emit("video-call-answer", {
       sender,
       receiver,
       answer: payload,

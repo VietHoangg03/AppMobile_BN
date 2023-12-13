@@ -78,7 +78,7 @@ app.use("/api/upload", require("./src/routes/upload.route"));
 app.use("/api/message", auth, require("./src/routes/message.route"));
 app.use("/api/conversation", auth, require("./src/routes/conversation.route"));
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 http.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
