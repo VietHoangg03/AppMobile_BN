@@ -19,6 +19,7 @@ const MessageSchema = new mongoose.Schema(
     // image -> 1
     // video -> 2
     // likeIcon -> 3
+    // callInfo -> 4
     msgType: {
       type: Number,
       default: enumMessenger.msgType.text,

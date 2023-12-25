@@ -35,6 +35,11 @@ const userCtrl = {
             as: "stories",
           },
         },
+        {
+          $sort: {
+            fullName: 1,
+          },
+        },
       ]);
 
       return res.status(200).json(users);

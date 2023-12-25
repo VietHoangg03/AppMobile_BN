@@ -8,7 +8,7 @@ const SocketServer = (socket, users) => {
     ({ sender, receiver, conversationId, offer, isVideoCall }) => {
       const socketReceiver = users[receiver._id];
 
-      console.log("START >>>>", socketReceiver);
+      // console.log("START >>>>", socketReceiver);
       socket.to(socketReceiver).emit("video-call-start", {
         sender,
         receiver,
@@ -22,14 +22,7 @@ const SocketServer = (socket, users) => {
   socket.on(
     "video-call-stop",
     ({ sender, receiver, conversationId, isCaller }) => {
-      let socketReceiver = null;
-      if (isCaller) {
-        socketReceiver = users[receiver._id];
-      } else {
-        socketReceiver = users[sender._id];
-      }
-
-      socket.to(socketReceiver).emit("video-call-stop", {
+      socket.broadcast.emit("video-call-stop", {
         sender,
         receiver,
         conversationId,
@@ -39,7 +32,7 @@ const SocketServer = (socket, users) => {
 
   socket.on("video-call-answer", ({ sender, receiver, payload }) => {
     // const socketReceiver = users.find((e) => e.userId === receiver)?.socketId;
-    console.log(sender, receiver, payload);
+    // console.log(sender, receiver, payload);
     socket.to(users[receiver._id]).emit("video-call-answer", {
       sender,
       receiver,
